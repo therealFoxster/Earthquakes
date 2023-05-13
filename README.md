@@ -1,4 +1,4 @@
-# Earthquake
+# Earthquakes
 
 App that queries and presents earthquake data hosted by the United States Geological Survey.
 
