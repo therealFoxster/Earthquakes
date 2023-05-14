@@ -14,6 +14,7 @@ struct Quake {
     let code: String
     let detail: URL
     let tsunami: Bool
+    var location: QuakeLocation?
 }
 
 extension Quake: Identifiable {
