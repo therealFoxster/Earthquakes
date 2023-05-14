@@ -23,7 +23,12 @@ struct Quakes: View {
         NavigationView {
             List(selection: $selection) {
                 ForEach(provider.quakes) { quake in
-                    QuakeRow(quake: quake)
+                    NavigationLink {
+                        QuakeDetail(quake: quake)
+                    } label: {
+                        QuakeRow(quake: quake)
+                    }
+                    .buttonStyle(.plain)
                 }
                 .onDelete(perform: deleteQuakes)
             }
@@ -44,11 +49,10 @@ struct Quakes: View {
 
 extension Quakes {
     var title: String {
-        if selectMode.isActive || selection.isEmpty {
-            return "Earthquakes"
-        } else {
+        if editMode.isEditing && !selection.isEmpty {
             return "\(selection.count) Selected"
         }
+        return "Earthquakes"
     }
 
     func deleteQuakes(at offsets: IndexSet) {
